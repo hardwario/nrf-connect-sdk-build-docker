@@ -51,22 +51,22 @@ RUN pip3 install --no-cache-dir west
 # required Python dependencies from multiple Git repositories
 RUN mkdir -p /tmp/nrf/scripts \
     && cd /tmp/nrf/scripts \
-    && wget https://raw.githubusercontent.com/nrfconnect/sdk-nrf/v1.8.0/scripts/requirements.txt \
-    && wget https://raw.githubusercontent.com/nrfconnect/sdk-nrf/v1.8.0/scripts/requirements-base.txt \
-    && wget https://raw.githubusercontent.com/nrfconnect/sdk-nrf/v1.8.0/scripts/requirements-build.txt \
-    && wget https://raw.githubusercontent.com/nrfconnect/sdk-nrf/v1.8.0/scripts/requirements-doc.txt \
+    && wget https://raw.githubusercontent.com/nrfconnect/sdk-nrf/v1.9.0/scripts/requirements.txt \
+    && wget https://raw.githubusercontent.com/nrfconnect/sdk-nrf/v1.9.0/scripts/requirements-base.txt \
+    && wget https://raw.githubusercontent.com/nrfconnect/sdk-nrf/v1.9.0/scripts/requirements-build.txt \
+    && wget https://raw.githubusercontent.com/nrfconnect/sdk-nrf/v1.9.0/scripts/requirements-doc.txt \
     && mkdir -p /tmp/zephyr/scripts \
     && cd /tmp/zephyr/scripts \
-    && wget https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v2.7.0-ncs1/scripts/requirements.txt \
-    && wget https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v2.7.0-ncs1/scripts/requirements-base.txt \
-    && wget https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v2.7.0-ncs1/scripts/requirements-build-test.txt \
-    && wget https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v2.7.0-ncs1/scripts/requirements-doc.txt \
-    && wget https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v2.7.0-ncs1/scripts/requirements-run-test.txt \
-    && wget https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v2.7.0-ncs1/scripts/requirements-extras.txt \
-    && wget https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v2.7.0-ncs1/scripts/requirements-compliance.txt \
+    && wget https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v2.7.99-ncs1/scripts/requirements.txt \
+    && wget https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v2.7.99-ncs1/scripts/requirements-base.txt \
+    && wget https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v2.7.99-ncs1/scripts/requirements-build-test.txt \
+    && wget https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v2.7.99-ncs1/scripts/requirements-doc.txt \
+    && wget https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v2.7.99-ncs1/scripts/requirements-run-test.txt \
+    && wget https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v2.7.99-ncs1/scripts/requirements-extras.txt \
+    && wget https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v2.7.99-ncs1/scripts/requirements-compliance.txt \
     && mkdir -p /tmp/bootloader/mcuboot/scripts \
     && cd /tmp/bootloader/mcuboot/scripts \
-    && wget https://raw.githubusercontent.com/nrfconnect/sdk-mcuboot/v1.7.99-ncs4/scripts/requirements.txt \
+    && wget https://raw.githubusercontent.com/nrfconnect/sdk-mcuboot/v1.8.99-ncs1/scripts/requirements.txt \
     && cd /tmp \
     && pip3 install --no-cache-dir -r zephyr/scripts/requirements.txt \
     && pip3 install --no-cache-dir -r nrf/scripts/requirements.txt \

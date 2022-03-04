@@ -12,13 +12,61 @@ https://hub.docker.com/r/hardwario/nrf-connect-sdk-build
 
 ## Tags 
 
+### v1.9.0-1
+
+Contains:
+* tools for build nRF Connect SDK v1.9.0
+* GNU Arm Embedded Toolchain 9-2019-q4-major
+
 ### v1.8.0-1
 
 Contains:
 * tools for build nRF Connect SDK v1.8.0
 * GNU Arm Embedded Toolchain 9-2019-q4-major
 
+## Docs
 
+* https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_installing.html
+
+
+
+
+
+
+
+## Example
+
+```
+cd application
+docker run --rm -it -v `pwd`/..:`pwd`/.. -w `pwd` -u `id -u`:`id -g` hardwario/zephyr-build:latest west build
+```
+
+
+## Hint
+For easier using recommended add alias to ~/.bashrc
+```
+alias dwest='docker run --rm -it -v `pwd`/..:`pwd`/.. -w `pwd` -u `id -u`:`id -g` hardwario/zephyr-build:latest'
+```
+
+## Workdir
+* /builds
+
+## Local build
+
+```
+docker build -t hardwario/zephyr-build:latest .
+```
+
+
+docker build -t hardwario/chester-app-build:latest .
+
+
+docker build -t hardwario/nrf-connect-sdk-build:latest .
+
+docker run --rm -it -v `pwd`/../../..:`pwd`/../../.. -w `pwd` -u `id -u`:`id -g` hardwario/nrf-connect-sdk-build:latest west build
+
+chester-app-build
+chester-lte-build
 
 ## License
 
