@@ -10,6 +10,10 @@ Docker for building firmware based on the [nRF Connect SDK](https://www.nordicse
 https://hub.docker.com/r/hardwario/nrf-connect-sdk-build
 
 
+## Tags 
+
+### v1.8.0-1
+
 Contains:
 * tools for build nRF Connect SDK v1.8.0
 * GNU Arm Embedded Toolchain 9-2019-q4-major
