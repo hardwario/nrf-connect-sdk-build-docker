@@ -1,72 +1,57 @@
 <a href="https://www.hardwario.com/"><img src="https://www.hardwario.com/ci/assets/hw-logo.svg" width="200" alt="HARDWARIO Logo" align="right"></a>
 
-# Build environment for nRF Connect SDK (NCS)
+# Build Environment for nRF Connect SDK
 
 [![CI](https://github.com/hardwario/nrf-connect-sdk-build-docker/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/hardwario/nrf-connect-sdk-build-docker/actions/workflows/main.yml)
 
-Docker for building firmware based on the [nRF Connect SDK](https://www.nordicsemi.com/Products/Development-software/nRF-Connect-SDK) 
+This repository contains Dockerfile definitions for all versions of nRF Connect SDK (NCS) from version `v1.8.0+`. It is useful for continuous integration builds and/or quick setup of the development environment on any desktop machine.
 
+The environment is based on Ubuntu 20.04 and follows the instructions for [manual installation](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_installing.html) provided by Nordic Semiconductor.
 
+The pre-built Docker image is available on Docker Hub:
 https://hub.docker.com/r/hardwario/nrf-connect-sdk-build
 
+## Releases
 
-## Tags 
-
-### v1.9.0-1
-
-Contains:
-* tools for build nRF Connect SDK v1.9.0
-* GNU Arm Embedded Toolchain 9-2019-q4-major
-
-### v1.8.0-1
-
-Contains:
-* tools for build nRF Connect SDK v1.8.0
-* GNU Arm Embedded Toolchain 9-2019-q4-major
-
-## Docs
-
-* https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_installing.html
-
-
-
-
-
-
-
-## Example
+Here is the list of the supported releases:
 
 ```
-cd application
-docker run --rm -it -v `pwd`/..:`pwd`/.. -w `pwd` -u `id -u`:`id -g` hardwario/zephyr-build:latest west build
+nRF Connect SDK v1.9.1 (uses GNU Arm Embedded Toolchain 9-2019-q4-major)
+nRF Connect SDK v1.9.0 (uses GNU Arm Embedded Toolchain 9-2019-q4-major)
+nRF Connect SDK v1.8.0 (uses GNU Arm Embedded Toolchain 9-2019-q4-major)
 ```
 
+## Building
 
-## Hint
-For easier using recommended add alias to ~/.bashrc
-```
-alias dwest='docker run --rm -it -v `pwd`/..:`pwd`/.. -w `pwd` -u `id -u`:`id -g` hardwario/zephyr-build:latest'
-```
-
-## Workdir
-* /builds
-
-## Local build
+Start Docker build (replace `X.Y.Z` with the desired version):
 
 ```
-docker build -t hardwario/zephyr-build:latest .
+docker build -t nrf-connect-sdk-build:vX.Y.Z ncs-vX.Y.Z
 ```
 
+## Alias
 
-docker build -t hardwario/chester-app-build:latest .
+For a more convenient usage, we recommended to add this alias to your shell (replace `X.Y.Z` with the desired version):
 
+```
+alias dwest="docker run --rm -it -v `pwd`:/home/build hardwario/nrf-connect-sdk-build:vX.Y.Z west"
+```
 
-docker build -t hardwario/nrf-connect-sdk-build:latest .
+Reload your shell environment and test the functionality:
 
-docker run --rm -it -v `pwd`/../../..:`pwd`/../../.. -w `pwd` -u `id -u`:`id -g` hardwario/nrf-connect-sdk-build:latest west build
+```
+dwest --version
+```
 
-chester-app-build
-chester-lte-build
+## Usage
+
+In case of alias, in order to build a project, you have to call the `dwest` command from the top level directory of the West workspace.
+
+Example:
+
+```
+dwest build -b <BOARD_NAME> zephyr/samples/basic/blinky -d zephyr/samples/basic/blinky/build
+```
 
 ## License
 
