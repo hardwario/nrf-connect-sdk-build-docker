@@ -2,17 +2,18 @@ name: GitHub Actions for nRF Connect SDK
 
 on:
   push:
-    branches: [main]
     tags: ["v*.*.*"]
-  pull_request:
-    branches: [main]
-
+  
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Get folder name
+        id: get_folder
+        run: echo ::set-output name=FOLDER::$(echo ncs-${GITHUB_REF##*/} | sed -e "s/-[[:digit:]]//")
 
       - name: Docker meta
         id: meta
@@ -38,6 +39,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
+          context: ${{ steps.get_folder.outputs.FOLDER }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
