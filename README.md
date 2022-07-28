@@ -17,6 +17,7 @@ Here is the list of the supported releases:
 
 ```
 nRF Connect SDK v2.0.1 (uses Zephyr Software Development Kit (SDK) v0.14.1)
+nRF Connect SDK v2.0.0 (uses Zephyr Software Development Kit (SDK) v0.14.1)
 nRF Connect SDK v1.9.1 (uses GNU Arm Embedded Toolchain 9-2019-q4-major)
 nRF Connect SDK v1.9.0 (uses GNU Arm Embedded Toolchain 9-2019-q4-major)
 nRF Connect SDK v1.8.0 (uses GNU Arm Embedded Toolchain 9-2019-q4-major)
