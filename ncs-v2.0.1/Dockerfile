@@ -56,7 +56,7 @@ RUN pip3 install --no-cache-dir west
 # pip3 install --user -r zephyr/scripts/requirements.txt
 RUN pip3 install --no-cache-dir -r https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v3.0.99-ncs1/scripts/requirements.txt
 # pip3 install --user -r nrf/scripts/requirements.txt
-RUN pip3 install --no-cache-dir -r https://raw.githubusercontent.com/nrfconnect/sdk-nrf/v2.0.0/scripts/requirements.txt
+RUN pip3 install --no-cache-dir -r https://raw.githubusercontent.com/nrfconnect/sdk-nrf/v2.0.1/scripts/requirements.txt
 # pip3 install --user -r bootloader/mcuboot/scripts/requirements.txt
 RUN pip3 install --no-cache-dir -r https://raw.githubusercontent.com/nrfconnect/sdk-mcuboot/v1.9.99-ncs1/scripts/requirements.txt
 
