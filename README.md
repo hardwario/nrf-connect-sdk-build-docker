@@ -10,7 +10,7 @@ This repository contains **Dockerfile** definitions for the **nRF Connect SDK** 
 The environment is based on **Ubuntu 22.04** and follows the instructions for [**manual installation**](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_installing.html) provided by **Nordic Semiconductor**.
 
 The pre-built **Docker** image is available on **Docker Hub**:<br>
-https://hub.docker.com/r/hardwario/nrf-connect-sdk-build
+**https://hub.docker.com/r/hardwario/nrf-connect-sdk-build**
 
 ## Building
 
