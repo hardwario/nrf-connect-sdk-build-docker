@@ -25,7 +25,7 @@ docker build -t hardwario/nrf-connect-sdk-build:v2.2.0 .
 For more convenient usage, we recommended adding this alias to your shell:
 
 ```
-alias dwest="docker run --rm -it -v `pwd`:/home/build/workspace hardwario/nrf-connect-sdk-build:v2.2.0 west"
+alias dwest="docker run --rm -it -v `pwd`:/build hardwario/nrf-connect-sdk-build:v2.2.0 west"
 ```
 
 Reload your shell environment and test the functionality:
