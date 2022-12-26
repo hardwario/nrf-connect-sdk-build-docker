@@ -21,6 +21,7 @@ RUN wget --no-hsts --no-verbose -O gn.zip \
     && unzip gn.zip -d /opt/gn \
     && rm gn.zip
 
+# Add GN tool to PATH
 ENV PATH=/opt/gn:$PATH
 
 # Set up Zephyr SDK (toolchain)
