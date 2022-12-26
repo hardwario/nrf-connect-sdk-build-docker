@@ -1,6 +1,12 @@
 # Dockerfile for nRF Connect SDK v2.2.0
 FROM ubuntu:22.04
 
+# Create directory fo ccache and set its permissions
+RUN mkdir /var/cache/ccache && chmod 777 /var/cache/ccache
+
+# Set environmental variable for ccache
+ENV CCACHE_DIR=/var/cache/ccache
+
 # Install "openssh-client" + "unzip" + "python3-venv" packages
 RUN DEBIAN_FRONTEND=noninteractive apt-get -qy update \
     && DEBIAN_FRONTEND=noninteractive apt-get -qy install openssh-client python3-venv unzip \
