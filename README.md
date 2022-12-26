@@ -45,10 +45,10 @@ docker run --rm -it hardwario/nrf-connect-sdk-build:v2.2.0 west --version
 Run this command to build firmware using the **Docker** image:
 
 ```
-sh -c 'docker run --rm -it --user $(id -u):$(id -g) -v $(pwd):/build --workdir /build/zephyr/samples/blinky hardwario/nrf-connect-sdk-build:v2.2.0 west build -b <BOARD_NAME>'
+sh -c 'docker run --rm -it --user $(id -u):$(id -g) -v $(pwd):/build --workdir /build/zephyr/samples/basic/blinky hardwario/nrf-connect-sdk-build:v2.2.0 west build -b <BOARD_NAME>'
 ```
 
-> This command must be run from the root directory of your **West** workspace. Note that the `docker` command is encapsulated under the `sh` command, so the users of the **Fish** shell can evaluate this example seamlessly.
+> This command must be run from the root directory of your **West** workspace. Note that the `docker` command is encapsulated under the `sh` command, so the users of the **Fish** shell can evaluate this example seamlessly. Do not forget to replace the `<BOARD_NAME>` parameter with the real board.
 
 ## License
 
