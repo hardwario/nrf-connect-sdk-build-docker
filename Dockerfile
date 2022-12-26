@@ -1,9 +1,9 @@
 # Dockerfile for nRF Connect SDK v2.2.0
 FROM ubuntu:22.04
 
-# Install "openssh-client" + "unzip" packages
+# Install "openssh-client" + "unzip" + "python3-venv" packages
 RUN DEBIAN_FRONTEND=noninteractive apt-get -qy update \
-    && DEBIAN_FRONTEND=noninteractive apt-get -qy install openssh-client unzip \
+    && DEBIAN_FRONTEND=noninteractive apt-get -qy install openssh-client python3-venv unzip \
     && rm -rf /var/lib/apt/lists/*
 
 # Install NCS dependencies
@@ -21,6 +21,8 @@ RUN wget --no-hsts --no-verbose -O gn.zip \
     && unzip gn.zip -d /opt/gn \
     && rm gn.zip
 
+ENV PATH=/opt/gn:$PATH
+
 # Set up Zephyr SDK (toolchain)
 RUN wget --no-hsts --no-verbose \
     https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.15.1/zephyr-sdk-0.15.1_linux-x86_64.tar.gz \
@@ -31,18 +33,24 @@ RUN wget --no-hsts --no-verbose \
     && rm zephyr-sdk-0.15.1_linux-x86_64.tar.gz \
     && /opt/zephyr-sdk-0.15.1/setup.sh -c -h -t all
 
+# Set installation directory of Zephyr SDK
+ENV ZEPHYR_SDK_INSTALL_DIR=/opt
+
+# Create Python virtual environment
+RUN python3 -m venv /venv
+
+# Add Python virtual environment to PATH
+ENV PATH=/venv/bin:$PATH
+
 # Install required Python packages
 # Source: https://raw.githubusercontent.com/nrfconnect/sdk-nrf/v2.2.0/west.yml
-RUN pip3 install --user --no-cache-dir --no-warn-script-location -r \
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r \
     https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v3.2.99-ncs1/scripts/requirements.txt \
-    && pip3 install --user --no-cache-dir --no-warn-script-location -r \
+    && pip install --no-cache-dir -r \
     https://raw.githubusercontent.com/nrfconnect/sdk-nrf/v2.2.0/scripts/requirements.txt \
-    && pip3 install --user --no-cache-dir --no-warn-script-location -r \
+    && pip install --no-cache-dir -r \
     https://raw.githubusercontent.com/nrfconnect/sdk-mcuboot/v1.9.99-ncs3/scripts/requirements.txt
 
 # Set working directory
 WORKDIR /build
-
-# Set environmental variables
-ENV PATH=/root/.local/bin:/opt/gn:$PATH
-ENV ZEPHYR_SDK_INSTALL_DIR=/opt
