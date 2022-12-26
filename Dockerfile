@@ -7,9 +7,9 @@ RUN mkdir /var/cache/ccache && chmod 777 /var/cache/ccache
 # Set environmental variable for ccache
 ENV CCACHE_DIR=/var/cache/ccache
 
-# Install "openssh-client" + "unzip" + "python3-venv" packages
+# Install "openssh-client" + "patch" + "unzip" + "python3-venv" packages
 RUN DEBIAN_FRONTEND=noninteractive apt-get -qy update \
-    && DEBIAN_FRONTEND=noninteractive apt-get -qy install openssh-client python3-venv unzip \
+    && DEBIAN_FRONTEND=noninteractive apt-get -qy install openssh-client patch python3-venv unzip \
     && rm -rf /var/lib/apt/lists/*
 
 # Install NCS dependencies
