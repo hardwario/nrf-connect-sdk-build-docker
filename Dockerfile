@@ -52,6 +52,3 @@ RUN pip install --no-cache-dir --upgrade pip \
     https://raw.githubusercontent.com/nrfconnect/sdk-nrf/v2.2.0/scripts/requirements.txt \
     && pip install --no-cache-dir -r \
     https://raw.githubusercontent.com/nrfconnect/sdk-mcuboot/v1.9.99-ncs3/scripts/requirements.txt
-
-# Set working directory
-WORKDIR /build
