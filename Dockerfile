@@ -9,7 +9,7 @@ ENV CCACHE_DIR=/var/cache/ccache
 
 # Install "openssh-client" + "patch" + "python3-venv" + "unzip" packages
 RUN DEBIAN_FRONTEND=noninteractive apt-get -qy update \
-    && DEBIAN_FRONTEND=noninteractive apt-get -qy install openssh-client patch python3-venv unzip \
+    && DEBIAN_FRONTEND=noninteractive apt-get -qy install openssh-client patch python3-venv unzip jq \
     && rm -rf /var/lib/apt/lists/*
 
 # Install NCS dependencies
@@ -39,19 +39,17 @@ RUN wget -q \
     | shasum --check --ignore-missing \
     && tar xf zephyr-sdk-0.16.1_linux-x86_64.tar.xz -C /opt \
     && rm zephyr-sdk-0.16.1_linux-x86_64.tar.xz \
-    && /opt/zephyr-sdk-0.16.1/setup.sh -t all -h -c
+    && /opt/zephyr-sdk-0.16.1/setup.sh -t all -h -c \
+    && bash -c 'rm -rf /opt/zephyr-sdk-0.16.1/{aarch64*,arc64*,arc*,microblazeel*,mips*,nios2*,riscv64*,sparc*,x86_64*,xtensa*}'
+
+RUN ls -lha /opt/zephyr-sdk-0.16.1
 
 # Set installation directory of Zephyr SDK
 ENV ZEPHYR_SDK_INSTALL_DIR=/opt
 
-# Create Python virtual environment
-RUN python3 -m venv /venv
-
-# Add Python virtual environment to PATH
-ENV PATH=/venv/bin:$PATH
-
 # Install required Python packages
 # Source: https://raw.githubusercontent.com/nrfconnect/sdk-nrf/v2.5.0/west.yml
+ENV PIP_ROOT_USER_ACTION=ignore
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r \
     https://raw.githubusercontent.com/nrfconnect/sdk-zephyr/v3.4.99-ncs1/scripts/requirements.txt \
