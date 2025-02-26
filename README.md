@@ -3,7 +3,7 @@
 # nrf-connect-sdk-build-docker
 # Build Environment for nRF Connect SDK
 
-[![CI](https://github.com/hardwario/nrf-connect-sdk-build-docker/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/hardwario/nrf-connect-sdk-build-docker/actions/workflows/main.yml)
+[![CI](https://github.com/hardwario/nrf-connect-sdk-build-docker/actions/workflows/main.yml/badge.svg)](https://github.com/hardwario/nrf-connect-sdk-build-docker/actions/workflows/main.yml)
 
 This repository contains **Dockerfile** for the **nRF Connect SDK** (NCS) version `v2.9.0` (this release uses **Zephyr SDK** `v0.17.0 as the validated toolchain). The **Docker** image is helpful for **CI/CD** pipelines or quick setup of the development environment on any desktop machine.
 
